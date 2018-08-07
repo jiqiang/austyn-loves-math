@@ -28,7 +28,7 @@ export class AppComponent {
     console.log(this.operation);
   }
 
-  ngOnInit() {
+  onInit() {
     this.getOperations();
     this.getOperation();
   }

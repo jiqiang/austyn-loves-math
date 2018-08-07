@@ -14,7 +14,7 @@ export class ArithmeticService {
   }
 
   public getAdditionOperations(operationType: OperationType): Operation[] {
-    let operations: Operation[] = [];
+    const operations: Operation[] = [];
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
         operations.push(<Operation> {
@@ -30,7 +30,7 @@ export class ArithmeticService {
 
   private getOperationResult(n1: number, n2: number, operationType: OperationType): number {
     let result: number;
-    switch(operationType) {
+    switch (operationType) {
       case '+':
         result = n1 + n2;
         break;

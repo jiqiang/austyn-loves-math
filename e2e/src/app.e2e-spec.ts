@@ -7,8 +7,8 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display +', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to austyn-loves-math!');
+    expect(page.getParagraphText()).toContain('+');
   });
 });

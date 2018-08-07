@@ -7,8 +7,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display +', () => {
+  it('should display + and =', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toContain('+');
+    expect(page.getParagraphText()).toContain('=');
   });
 });

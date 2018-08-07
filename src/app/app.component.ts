@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   title = 'austyn-loves-math';
   operation: Operation ;
   operations: Operation[];
+  userInput: string = '';
 
   constructor(private arithmeticService: ArithmeticService) {}
 
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
 
   selectNext(): void {
     this.getOperation();
+    this.clearUserInput();
   }
 
   ngOnInit() {
@@ -32,8 +34,17 @@ export class AppComponent implements OnInit {
     this.getOperation();
   }
 
-  onNumberPadClicked(value: number) {
-    console.log(value);
+  onNumberPadClicked(value: string) {
+    this.userInput += value;
   }
 
+  clearUserInput(): void {
+    this.userInput = '';
+  }
+
+  confirmUserInput(): void {
+    if (this.operation.result === parseInt(this.userInput)) {
+      this.selectNext();
+    }
+  }
 }

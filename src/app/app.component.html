@@ -1,7 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>{{operation.n1}} {{operation.type}} {{operation.n2}} = {{operation.result}}</h1>
-  <button (click)="selectNext()">next</button>
+  <h1>{{operation.n1}} {{operation.type}} {{operation.n2}} = {{userInput}}</h1>
+  <button (click)="confirmUserInput()">ok</button>
+  <!-- <button (click)="selectNext()">next</button> -->
+  <button (click)="clearUserInput()">clear</button>
 </div>
 <div>
   <number-pad (clicked)="onNumberPadClicked($event)"></number-pad>

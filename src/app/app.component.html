@@ -3,3 +3,6 @@
   <h1>{{operation.n1}} {{operation.type}} {{operation.n2}} = {{operation.result}}</h1>
   <button (click)="selectNext()">next</button>
 </div>
+<div>
+  <number-pad (clicked)="onNumberPadClicked($event)"></number-pad>
+</div>

@@ -25,12 +25,15 @@ export class AppComponent implements OnInit {
 
   selectNext(): void {
     this.getOperation();
-    console.log(this.operation);
   }
 
   ngOnInit() {
     this.getOperations();
     this.getOperation();
+  }
+
+  onNumberPadClicked(value: number) {
+    console.log(value);
   }
 
 }

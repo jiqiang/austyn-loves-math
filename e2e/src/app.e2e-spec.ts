@@ -9,8 +9,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should pass', () => {
+  it('should contain + and =', () => {
     page.navigateTo();
-    expect(true).toBeTruthy();
+    expect(page.getParagraphText()).toContain('+');
+    expect(page.getParagraphText()).toContain('=');
   });
 });

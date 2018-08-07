@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArithmeticService } from './arithmetic.service';
 import { Operation } from './operation';
 import { OperationType } from './operation-type.enum';
@@ -8,7 +8,7 @@ import { OperationType } from './operation-type.enum';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'austyn-loves-math';
   operation: Operation ;
   operations: Operation[];
@@ -28,7 +28,7 @@ export class AppComponent {
     console.log(this.operation);
   }
 
-  onInit() {
+  ngOnInit() {
     this.getOperations();
     this.getOperation();
   }

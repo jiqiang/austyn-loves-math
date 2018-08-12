@@ -1,8 +1,9 @@
 :host {
-  width: 320px;
+  width: 400px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .item {

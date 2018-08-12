@@ -5,17 +5,18 @@
 }
 
 .result {
-  font-size: 32px;
-  padding: 16px 0 0 0;
-  text-align: center;
-}
-
-.operation {
-  font-size: 48px;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.operation {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
 }
 
 .operation.alert {
@@ -23,5 +24,6 @@
 }
 
 number-pad {
+  flex: 2;
   margin: 0 auto;
 }

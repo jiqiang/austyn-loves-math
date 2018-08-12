@@ -25,7 +25,7 @@ export class ArithmeticService {
         });
       }
     }
-    return operations;
+    return this.shuffle(operations);
   }
 
   private getOperationResult(n1: number, n2: number, operationType: OperationType): number {
@@ -45,5 +45,24 @@ export class ArithmeticService {
         break;
     }
     return result;
+  }
+
+  public shuffle(array) {
+    let counter = array.length;
+
+    // While there are elements in the array
+    while (counter > 0) {
+      // Pick a random index
+      let index = Math.floor(Math.random() * counter);
+
+      // Decrease counter by 1
+      counter--;
+
+      // And swap the last element with it
+      let temp = array[counter];
+      array[counter] = array[index];
+      array[index] = temp;
+    }
+    return array;
   }
 }

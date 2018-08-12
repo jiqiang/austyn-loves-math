@@ -13,11 +13,14 @@ export class AppComponent implements OnInit {
   operation: Operation ;
   operations: Operation[];
   userInput: string = '';
+  score: number = 0;
+  index: number = 0;
+  isWrongAnswer: boolean = false;
 
   constructor(private arithmeticService: ArithmeticService) {}
 
   getOperation(): void {
-    this.operation = this.operations[this.arithmeticService.getRandomInt(0, 99)];
+    this.operation = this.operations[this.index];
   }
 
   getOperations(): void {
@@ -30,21 +33,48 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.reset();
+  }
+
+  reset() {
+    this.score = 0;
+    this.index = 0;
+    this.userInput = '';
+    this.isWrongAnswer = false;
     this.getOperations();
     this.getOperation();
   }
 
-  onNumberPadClicked(value: string) {
+  onNumberPadClicked(value: string): void {
+    if (value === 'OK') {
+      this.confirmUserInput();
+      return;
+    }
+
+    if (value === 'CLEAR') {
+      this.clearUserInput();
+      return;
+    }
+
     this.userInput += value;
   }
 
   clearUserInput(): void {
     this.userInput = '';
+    this.isWrongAnswer = false;
   }
 
   confirmUserInput(): void {
+    if (this.index === this.operations.length - 1) {
+      return;
+    }
+
     if (this.operation.result === parseInt(this.userInput)) {
+      this.score++;
+      this.index++;
       this.selectNext();
+    } else {
+      this.isWrongAnswer = true;
     }
   }
 }

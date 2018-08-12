@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.result {
+  font-size: 32px;
+  padding: 16px 0 0 0;
+  text-align: center;
+}
+
+.operation {
+  font-size: 48px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.operation.alert {
+  color: red;
+}
+
+number-pad {
+  margin: 0 auto;
+}

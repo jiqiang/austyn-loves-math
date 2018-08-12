@@ -12,7 +12,7 @@
 }
 
 .operation {
-  flex: 3;
+  flex: 5;
   display: flex;
   justify-content: center;
   align-items: center;

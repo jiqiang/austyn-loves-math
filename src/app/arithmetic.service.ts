@@ -30,7 +30,7 @@ export class ArithmeticService {
 
   public getSubtractionOperations(operationType: OperationType): Operation[] {
     const operations: Operation[] = [];
-    for (let i = 9; i >=0; i--) {
+    for (let i = 9; i >= 0; i--) {
       for (let j = i; j >= 0; j--) {
         operations.push(<Operation> {
           type: OperationType.SUBTRACTION,
@@ -68,13 +68,13 @@ export class ArithmeticService {
     // While there are elements in the array
     while (counter > 0) {
       // Pick a random index
-      let index = Math.floor(Math.random() * counter);
+      const index = Math.floor(Math.random() * counter);
 
       // Decrease counter by 1
       counter--;
 
       // And swap the last element with it
-      let temp = array[counter];
+      const temp = array[counter];
       array[counter] = array[index];
       array[index] = temp;
     }

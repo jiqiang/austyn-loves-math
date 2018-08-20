@@ -12,10 +12,10 @@ export class AppComponent implements OnInit {
   title = 'austyn-loves-math';
   operation: Operation ;
   operations: Operation[];
-  userInput: string = '';
-  score: number = 0;
-  index: number = 0;
-  isWrongAnswer: boolean = false;
+  userInput = '';
+  score = 0;
+  index = 0;
+  isWrongAnswer = false;
 
   constructor(private arithmeticService: ArithmeticService) {}
 
@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    if (this.operation.result === parseInt(this.userInput)) {
+    if (this.operation.result === parseInt(this.userInput, 10)) {
       this.score++;
       this.index++;
       this.selectNext();

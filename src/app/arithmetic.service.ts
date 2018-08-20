@@ -13,10 +13,26 @@ export class ArithmeticService {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  public getAdditionResultTens() {
+    const operations: Operation[] = [];
+    for (let i = 1; i < 10; i ++) {
+      operations.push(<Operation> {
+        type: OperationType.ADDITION,
+        n1: i,
+        n2: 10 - i,
+        result: 10
+      });
+    }
+    return this.shuffle(operations);
+  }
+
   public getAdditionOperations(operationType: OperationType): Operation[] {
     const operations: Operation[] = [];
     for (let i = 4; i < 10; i++) {
       for (let j = 4; j < 10; j++) {
+        if (i + j === 10) {
+          continue;
+        }
         operations.push(<Operation> {
           type: OperationType.ADDITION,
           n1: i,

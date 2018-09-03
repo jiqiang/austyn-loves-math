@@ -30,9 +30,6 @@ export class ArithmeticService {
     const operations: Operation[] = [];
     for (let i = 4; i < 10; i++) {
       for (let j = 4; j < 10; j++) {
-        if (i + j === 10) {
-          continue;
-        }
         operations.push(<Operation> {
           type: OperationType.ADDITION,
           n1: i,

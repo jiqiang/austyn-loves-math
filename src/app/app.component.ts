@@ -24,11 +24,9 @@ export class AppComponent implements OnInit {
   }
 
   getOperations(): void {
-    let additionTens = this.arithmeticService.getAdditionResultTens();
     let additions = this.arithmeticService.getAdditionOperations(OperationType.ADDITION);
     let subtractions = this.arithmeticService.getSubtractionOperations(OperationType.SUBTRACTION);
     this.operations = additions.concat(subtractions);
-    this.operations = additionTens.concat(this.arithmeticService.shuffle(this.operations));
   }
 
   selectNext(): void {

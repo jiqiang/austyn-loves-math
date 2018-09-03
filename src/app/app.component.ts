@@ -17,6 +17,9 @@ export class AppComponent implements OnInit {
   index = 0;
   isWrongAnswer = false;
   isCompleted = false;
+  questionStartTime: any;
+  questionEndTime: any;
+  timeElapsed: number;
 
   constructor(private arithmeticService: ArithmeticService) {}
 
@@ -37,6 +40,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.reset();
+    this.questionStartTime = new Date();
   }
 
   reset() {
@@ -45,6 +49,8 @@ export class AppComponent implements OnInit {
     this.userInput = '';
     this.isWrongAnswer = false;
     this.isCompleted = false;
+    this.questionStartTime = new Date();
+    this.questionEndTime = new Date();
     this.getOperations();
     this.getOperation();
   }
@@ -76,6 +82,10 @@ export class AppComponent implements OnInit {
     if (this.operation.result === parseInt(this.userInput, 10)) {
       this.score++;
       this.index++;
+      this.questionEndTime = new Date();
+      this.timeElapsed = this.questionEndTime - this.questionStartTime;
+      this.questionStartTime = this.questionEndTime;
+      console.log(this.timeElapsed);
     } else {
       this.isWrongAnswer = true;
       return;

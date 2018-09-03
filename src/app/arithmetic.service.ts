@@ -28,8 +28,8 @@ export class ArithmeticService {
 
   public getAdditionOperations(operationType: OperationType): Operation[] {
     const operations: Operation[] = [];
-    for (let i = 4; i < 10; i++) {
-      for (let j = 4; j < 10; j++) {
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
         operations.push(<Operation> {
           type: OperationType.ADDITION,
           n1: i,

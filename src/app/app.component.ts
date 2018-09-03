@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   score = 0;
   index = 0;
   isWrongAnswer = false;
+  isCompleted = false;
 
   constructor(private arithmeticService: ArithmeticService) {}
 
@@ -43,6 +44,7 @@ export class AppComponent implements OnInit {
     this.index = 0;
     this.userInput = '';
     this.isWrongAnswer = false;
+    this.isCompleted = false;
     this.getOperations();
     this.getOperation();
   }
@@ -67,16 +69,23 @@ export class AppComponent implements OnInit {
   }
 
   confirmUserInput(): void {
-    if (this.index === this.operations.length - 1) {
+    if (this.isCompleted) {
       return;
     }
 
     if (this.operation.result === parseInt(this.userInput, 10)) {
       this.score++;
       this.index++;
-      this.selectNext();
     } else {
       this.isWrongAnswer = true;
+      return;
     }
+
+    if (this.index === this.operations.length) {
+      this.isCompleted = true;
+      return;
+    }
+
+    this.selectNext();
   }
 }

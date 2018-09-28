@@ -5,7 +5,7 @@ import { OperationType } from './operation-type.enum';
 @Injectable({
   providedIn: 'root'
 })
-export class ArithmeticService {
+export class ExamService {
 
   constructor() { }
 

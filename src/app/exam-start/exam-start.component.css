@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+  height: 84vh;
+}
+
+.result {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.operation {
+  flex: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+.operation.alert {
+  color: red;
+}
+
+exam-keyboard {
+  flex: 3;
+  margin: 0 auto;
+}

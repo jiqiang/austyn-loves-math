@@ -1,0 +1,12 @@
+form {
+    padding: 0 16px;
+}
+
+form .addition-setting {
+    display: flex;
+    justify-content: space-around;
+}
+
+form .addition-setting > div > input {
+    border: 1px solid #000000;
+}

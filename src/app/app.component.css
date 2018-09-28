@@ -4,26 +4,13 @@
   height: 100%;
 }
 
-.result {
+.exam-menu {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.operation {
-  flex: 5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-}
-
-.operation.alert {
-  color: red;
-}
-
-number-pad {
-  flex: 2;
-  margin: 0 auto;
+.exam-container {
+  flex: 6;
 }

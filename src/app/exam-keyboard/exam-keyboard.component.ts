@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'number-pad',
-  templateUrl: './number-pad.component.html',
-  styleUrls: ['./number-pad.component.css']
+  selector: 'exam-keyboard',
+  templateUrl: './exam-keyboard.component.html',
+  styleUrls: ['./exam-keyboard.component.css']
 })
-export class NumberPadComponent implements OnInit {
+export class ExamKeyboardComponent implements OnInit {
   @Output() clicked = new EventEmitter<string>();
 
   constructor() { }

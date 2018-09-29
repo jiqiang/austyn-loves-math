@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './/app-routing.module';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ExamSettingComponent } from './exam-setting/exam-setting.component';
@@ -18,7 +19,8 @@ import { ExamKeyboardComponent } from './exam-keyboard/exam-keyboard.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })

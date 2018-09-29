@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExamSettingService } from '../core/service/exam-setting.service';
 
 @Component({
   selector: 'exam-setting',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exam-setting.component.css']
 })
 export class ExamSettingComponent implements OnInit {
-
-  constructor() { }
+  public setting: any;
+  
+  constructor(private examSettingService: ExamSettingService) { }
 
   ngOnInit() {
+    this.setting = this.examSettingService.fetchSetting();
   }
 
 }

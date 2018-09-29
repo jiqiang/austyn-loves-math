@@ -9,6 +9,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.exam-menu > a {
+  padding: 0 16px;
+  text-decoration: none;
 }
 
 .exam-container {

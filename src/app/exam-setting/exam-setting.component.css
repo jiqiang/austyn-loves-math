@@ -1,12 +1,33 @@
-form {
-    padding: 0 16px;
+.exam-setting-form {
+    padding: 0 8px;
 }
 
-form .addition-setting {
+.exam-setting-form legend {
+    padding: 0 8px;
+}
+
+.exam-setting-form fieldset {
+    border: 1px solid grey;
+    padding: 16px 12px;
+    margin-bottom: 16px;
+}
+
+.exam-setting-form fieldset > label {
+    display: block;
+    margin-top: 16px;
+}
+
+.exam-setting-form .operator-setting {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    flex-wrap: nowrap;
 }
 
-form .addition-setting > div > input {
-    border: 1px solid #000000;
+.exam-setting-form .operator-setting > input {
+    width: 20%;
+    border: 1px solid grey;
+    border-radius: 0px;
+    padding: 8px 4px;
+    text-align: center;
+    font-size: 12px;
 }

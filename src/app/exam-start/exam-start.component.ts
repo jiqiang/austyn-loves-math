@@ -29,9 +29,7 @@ export class ExamStartComponent implements OnInit {
   }
 
   getOperations(): void {
-    let additions = this.examService.getAdditionOperations(OperationType.ADDITION);
-    let subtractions = this.examService.getSubtractionOperations(OperationType.SUBTRACTION);
-    this.operations = additions.concat(subtractions);
+    this.operations = this.examService.getOperations();
   }
 
   selectNext(): void {
@@ -86,7 +84,6 @@ export class ExamStartComponent implements OnInit {
       this.questionEndTime = new Date();
       this.timeElapsed = this.questionEndTime - this.questionStartTime;
       this.questionStartTime = this.questionEndTime;
-      console.log(this.timeElapsed);
     } else {
       this.isWrongAnswer = true;
       return;

@@ -28,7 +28,7 @@ export class ExamService {
 
   public getAdditionOperations(operationType: OperationType): Operation[] {
     const operations: Operation[] = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 10; i < 100; i++) {
       for (let j = 0; j < 10; j++) {
         operations.push(<Operation> {
           type: OperationType.ADDITION,
@@ -38,13 +38,13 @@ export class ExamService {
         });
       }
     }
-    return this.shuffle(operations);
+    return operations;
   }
 
   public getSubtractionOperations(operationType: OperationType): Operation[] {
     const operations: Operation[] = [];
-    for (let i = 9; i >= 0; i--) {
-      for (let j = i; j >= 0; j--) {
+    for (let i = 10; i < 100; i++) {
+      for (let j = 0; j < 10; j++) {
         operations.push(<Operation> {
           type: OperationType.SUBTRACTION,
           n1: i,
@@ -53,7 +53,7 @@ export class ExamService {
         });
       }
     }
-    return this.shuffle(operations);
+    return operations
   }
 
   private getOperationResult(n1: number, n2: number, operationType: OperationType): number {
@@ -92,5 +92,11 @@ export class ExamService {
       array[index] = temp;
     }
     return array;
+  }
+
+  public getOperations() {
+    let addOpts = this.getAdditionOperations(OperationType.ADDITION);
+    let subOpts = this.getSubtractionOperations(OperationType.SUBTRACTION);
+    return this.shuffle(this.shuffle(addOpts).slice(0, 25).concat(this.shuffle(subOpts).slice(0, 25)));
   }
 }

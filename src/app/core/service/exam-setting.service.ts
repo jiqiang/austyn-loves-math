@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, SimpleChange } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,17 @@ export class ExamSettingService {
   constructor() { }
 
   fetchSetting(): any {
+    if (this.setting) {
+      console.log("fetch cached setting");
+      return this.setting;
+    }
+
+    this.setting = this.fetchSettingFromLocalStorage();
+    return this.setting;
+  }
+
+  fetchSettingFromLocalStorage(): any {
+    console.log("fetch stored setting");
     return {
       "addition": {
         "opt1": {

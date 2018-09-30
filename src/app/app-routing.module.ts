@@ -5,7 +5,8 @@ import { ExamSettingComponent } from './exam-setting/exam-setting.component';
 import { ExamStartComponent } from './exam-start/exam-start.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/start', pathMatch: 'full' },
+  { path: '', component: ExamStartComponent },
+  //{ path: '', redirectTo: '/start', pathMatch: 'full' },
   { path: 'statistics', component: ExamStatisticsComponent },
   { path: 'setting', component: ExamSettingComponent },
   { path: 'start', component: ExamStartComponent }

@@ -1,3 +1,10 @@
+:host {
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .exam-setting-form {
     padding: 0 8px;
 }

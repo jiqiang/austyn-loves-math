@@ -1,4 +1,4 @@
 <div class="result">SCORE: {{score}}/{{operations.length}}</div>
-<div *ngIf="!isCompleted" [ngClass]="{'alert': isWrongAnswer, 'operation': true}">{{operation.n1}} {{operation.type}} {{operation.n2}} = {{userInput}}</div>
-<div *ngIf="isCompleted" class="operation">Good job Austyn!</div>
+<div [ngClass]="{'alert': isWrongAnswer, 'operation': true}">{{operation.n1}} {{operation.type}} {{operation.n2}} = {{userInput}}</div>
+<!-- <div *ngIf="isCompleted" class="operation">Good job Austyn!</div> -->
 <exam-keyboard class="item" (clicked)="onNumberPadClicked($event)"></exam-keyboard>

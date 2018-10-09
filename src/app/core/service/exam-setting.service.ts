@@ -1,4 +1,5 @@
 import { Injectable, SimpleChange } from '@angular/core';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,21 @@ import { Injectable, SimpleChange } from '@angular/core';
 export class ExamSettingService {
   private setting: any;
 
-  constructor() { }
+  public defaultSetting = {
+    "testAddition": false,
+    "additionAMin": 0,
+    "additionAMax": 9,
+    "additionBMin": 0,
+    "additionBMax": 9,
+    "testSubtraction": false,
+    "subtractionAMin": 0,
+    "subtractionAMax": 9,
+    "subtractionBMin": 0,
+    "subtractionBMax": 9,
+    "subtractionAllowNegtiveResult": false
+  };
+
+  constructor(private localStorageService: LocalStorageService) { }
 
   fetchSetting(): any {
     if (this.setting) {
@@ -20,28 +35,16 @@ export class ExamSettingService {
 
   fetchSettingFromLocalStorage(): any {
     console.log("fetch stored setting");
-    return {
-      "addition": {
-        "opt1": {
-          "min": 0,
-          "max": 9
-        },
-        "opt2": {
-          "min": 0,
-          "max": 9
-        }
-      },
-      "subtraction": {
-        "opt1": {
-          "min": 0,
-          "max": 9
-        },
-        "opt2": {
-          "min": 0,
-          "max": 9
-        },
-        "allow_negtive_result": false
-      }
-    };
+    let setting = this.localStorageService.fetch();
+    if (setting === '') {
+      this.localStorageService.save(JSON.stringify(this.defaultSetting));
+      return this.defaultSetting;
+    }
+    return JSON.parse(setting);
+  }
+
+  save(setting: any): void {
+    this.setting = setting;
+    this.localStorageService.save(JSON.stringify(setting));
   }
 }

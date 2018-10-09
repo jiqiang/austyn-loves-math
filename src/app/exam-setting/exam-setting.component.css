@@ -38,3 +38,13 @@
     text-align: center;
     font-size: 12px;
 }
+
+.exam-setting-form .action-container {
+    text-align: center;
+}
+
+.exam-setting-form .action-container button[type="submit"] {
+    border: 1px solid gray;
+    background-color: white;
+    padding: 8px 16px;
+}

@@ -1,31 +1,34 @@
-<form class="exam-setting-form">
+<form class="exam-setting-form" [formGroup]="settingForm" (ngSubmit)="onSubmit()">
     <fieldset>
         <legend>
             <label for="test_addition">
-                <input type="checkbox" name="test_addition" id="test_addition" /> 测试加法: A + B = C
+                <input type="checkbox" name="test_addition" id="test_addition" formControlName="testAddition" /> 测试加法: A + B = C
             </label>
         </legend>
         <div class="operator-setting">
-            <input name="addition_a_min" type="number" placeholder="A 最小值" [(ngModel)]="setting.addition.opt1.min" />
-            <input name="addition_a_max" type="number" placeholder="A 最大值" [(ngModel)]="setting.addition.opt1.max" />
-            <input name="addition_b_min" type="number" placeholder="B 最小值" [(ngModel)]="setting.addition.opt2.min" />
-            <input name="addition_b_max" type="number" placeholder="B 最大值" [(ngModel)]="setting.addition.opt2.max" />
+            <input name="addition_a_min" type="number" placeholder="A 最小值" formControlName="additionAMin" />
+            <input name="addition_a_max" type="number" placeholder="A 最大值" formControlName="additionAMax" />
+            <input name="addition_b_min" type="number" placeholder="B 最小值" formControlName="additionBMin" />
+            <input name="addition_b_max" type="number" placeholder="B 最大值" formControlName="additionBMax" />
         </div>
     </fieldset>
     <fieldset>
         <legend>
             <label for="test_subtraction">
-                <input type="checkbox" name="test_subtraction" id="test_subtraction" /> 测试减法: A - B = C
+                <input type="checkbox" name="test_subtraction" id="test_subtraction" formControlName="testSubtraction" /> 测试减法: A - B = C
             </label>
         </legend>
         <div class="operator-setting">
-            <input name="subtraction_a_min" type="number" placeholder="A 最小值" [(ngModel)]="setting.subtraction.opt1.min" />
-            <input name="subtraction_a_max" type="number" placeholder="A 最大值" [(ngModel)]="setting.subtraction.opt1.max" />
-            <input name="subtraction_b_min" type="number" placeholder="B 最小值" [(ngModel)]="setting.subtraction.opt2.min" />
-            <input name="subtraction_b_max" type="number" placeholder="B 最大值" [(ngModel)]="setting.subtraction.opt2.max" />
+            <input name="subtraction_a_min" type="number" placeholder="A 最小值" formControlName="subtractionAMin" />
+            <input name="subtraction_a_max" type="number" placeholder="A 最大值" formControlName="subtractionAMax" />
+            <input name="subtraction_b_min" type="number" placeholder="B 最小值" formControlName="subtractionBMin" />
+            <input name="subtraction_b_max" type="number" placeholder="B 最大值" formControlName="subtractionBMax" />
         </div>
         <label for="subtraction_allow_negtive_result">
-            <input type="checkbox" name="subtraction_allow_negtive_result" id="subtraction_allow_negtive_result" [(ngModel)]= "setting.subtraction.allow_negtive_result" /> 允许减法运算结果为负数
+            <input type="checkbox" name="subtraction_allow_negtive_result" id="subtraction_allow_negtive_result" formControlName="subtractionAllowNegtiveResult" /> 允许减法运算结果为负数
         </label>
     </fieldset>
+    <div class="action-container">
+        <button type="submit">保存设置</button>
+    </div>
 </form>

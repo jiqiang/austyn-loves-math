@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Operation } from '../core/operation';
-import { OperationType } from '../core/operation-type.enum';
-import { ExamService } from '../core/exam.service';
+import { ExamService } from '../core/service/exam.service';
+import { ExamSettingService } from '../core/service/exam-setting.service';
 
 @Component({
   selector: 'exam-start',
@@ -22,7 +22,9 @@ export class ExamStartComponent implements OnInit {
   questionEndTime: any;
   timeElapsed: number;
 
-  constructor(private examService: ExamService) {}
+  constructor(
+    private examService: ExamService,
+    private examSettingService: ExamSettingService) {}
 
   getOperation(): void {
     this.operation = this.operations[this.index];
@@ -38,6 +40,7 @@ export class ExamStartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.examService.Setting = this.examSettingService.fetchSetting();
     this.reset();
     this.questionStartTime = new Date();
   }

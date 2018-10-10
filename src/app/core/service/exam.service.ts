@@ -1,35 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Operation } from './operation';
-import { OperationType } from './operation-type.enum';
+import { Operation } from '../operation';
+import { OperationType } from '../operation-type.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExamService {
+  private setting: any;
 
-  constructor() { }
+  constructor() {}
 
-  public getRandomInt(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  public getAdditionResultTens() {
-    const operations: Operation[] = [];
-    for (let i = 1; i < 10; i ++) {
-      operations.push(<Operation> {
-        type: OperationType.ADDITION,
-        n1: i,
-        n2: 10 - i,
-        result: 10
-      });
-    }
-    return this.shuffle(operations);
+  public set Setting(setting: any) {
+    this.setting = setting;
   }
 
   public getAdditionOperations(operationType: OperationType): Operation[] {
     const operations: Operation[] = [];
-    for (let i = 10; i < 100; i++) {
-      for (let j = 0; j < 10; j++) {
+    for (let i = this.setting.additionAMin; i <= this.setting.additionAMax; i++) {
+      for (let j = this.setting.additionBMin; j <= this.setting.additionBMax; j++) {
         operations.push(<Operation> {
           type: OperationType.ADDITION,
           n1: i,
@@ -43,8 +31,11 @@ export class ExamService {
 
   public getSubtractionOperations(operationType: OperationType): Operation[] {
     const operations: Operation[] = [];
-    for (let i = 10; i < 100; i++) {
-      for (let j = 0; j < 10; j++) {
+    for (let i = this.setting.subtractionAMin; i <= this.setting.subtractionAMax; i++) {
+      for (let j = this.setting.subtractionBMin; j <= this.setting.subtractionBMax; j++) {
+        if (!this.setting.subtractionAllowNegtiveResult && this.getOperationResult(i, j, operationType) < 0) {
+          continue;
+        }
         operations.push(<Operation> {
           type: OperationType.SUBTRACTION,
           n1: i,
@@ -95,8 +86,15 @@ export class ExamService {
   }
 
   public getOperations() {
-    let addOpts = this.getAdditionOperations(OperationType.ADDITION);
-    let subOpts = this.getSubtractionOperations(OperationType.SUBTRACTION);
-    return this.shuffle(this.shuffle(addOpts).slice(0, 25).concat(this.shuffle(subOpts).slice(0, 25)));
+    let opts = [];
+    if (this.setting.testAddition) {
+      opts = opts.concat(this.shuffle(this.getAdditionOperations(OperationType.ADDITION)).slice(0, 25));
+    }
+
+    if (this.setting.testSubtraction) {
+      opts = opts.concat(this.shuffle(this.getSubtractionOperations(OperationType.SUBTRACTION)).slice(0, 25));
+    }
+    
+    return this.shuffle(opts);
   }
 }
